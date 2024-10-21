@@ -6,18 +6,17 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class HomeController extends Controller
 {
 
-    public function index()
+  public function index()
     {
-        // Načte všechny produkty z databáze
+        // Načtěte produkty z databáze
         $products = Product::all();
 
-        // Předá produkty do view
-        return view('products.index', compact('products'));
+        // Předání produktů do view
+        return view('home', compact('products'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
