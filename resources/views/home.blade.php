@@ -3,32 +3,38 @@
 @section('content')
     <!-- Hero Section with Image and Gradient -->
     <div class="relative h-screen">
-        <img src="https://imgs.search.brave.com/ko2Q7ZOGLlqvLvF_YRANMCfq0u33Z5RmFO9DCe4WCQw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS81/YTllZTY0MTZlOTBk/MjAwMDFiMjAwMzgv/NjI4OWYwYmZhOTIw/YTk1OGYyYjQxNmY3/X2JsYWNrLWdyYWRp/ZW50LnBuZw" alt="Vítejte" class="object-cover w-full h-3/4">
-        <div class="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div>
-        <div class="flex items-center justify-center h-3/4 relative">
-            <h1 class="text-white text-5xl font-bold text-center z-10">Vítejte na naší stránce!</h1>
+        <img 
+            src="https://imgs.search.brave.com/ko2Q7ZOGLlqvLvF_YRANMCfq0u33Z5RmFO9DCe4WCQw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS81/YTllZTY0MTZlOTBk/MjAwMDFiMjAwMzgv/NjI4OWYwYmZhOTIw/YTk1OGYyYjQxNmY3/X2JsYWNrLWdyYWRp/ZW50LnBuZw" 
+            alt="Vítejte" 
+            class="object-cover w-full h-full opacity-80"
+        >
+        <div class="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-60"></div>
+        <div class="flex items-center justify-center h-full relative p-4">
+            <h1 class="text-white text-5xl font-extrabold text-center z-10 md:text-6xl lg:text-7xl">Vítejte na naší stránce!</h1>
         </div>
     </div>
+    
 
     <!-- Why Choose Us Section -->
     <div class="py-10 text-center bg-gray-100">
-        <h2 class="text-3xl font-semibold">Proč nakupovat u nás?</h2>
-        <p class="mt-4 text-lg text-gray-700">Nabízíme nejlepší produkty za nejlepší ceny!</p>
-        <div class="mt-6 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <div class="bg-white shadow-md rounded-lg p-6 max-w-xs mx-auto">
-                <h3 class="text-lg font-bold">Rychlá Doprava</h3>
-                <p class="mt-2">Zaručujeme rychlé dodání vašich objednávek.</p>
+        <h2 class="text-4xl font-extrabold text-gray-800">Proč nakupovat u nás?</h2>
+        <p class="mt-4 text-lg text-gray-600">Nabízíme nejlepší produkty za nejlepší ceny!</p>
+        <div class="mt-8 flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
+            <div class="bg-white shadow-lg rounded-lg p-6 max-w-xs mx-auto transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-900">Rychlá Doprava</h3>
+                <p class="mt-2 text-gray-700">Zaručujeme rychlé dodání vašich objednávek.</p>
             </div>
-            <div class="bg-white shadow-md rounded-lg p-6 max-w-xs mx-auto">
-                <h3 class="text-lg font-bold">Kvalitní Produkty</h3>
-                <p class="mt-2">Naše produkty procházejí důkladným výběrem kvality.</p>
+            <div class="bg-white shadow-lg rounded-lg p-6 max-w-xs mx-auto transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-900">Kvalitní Produkty</h3>
+                <p class="mt-2 text-gray-700">Naše produkty procházejí důkladným výběrem kvality.</p>
             </div>
-            <div class="bg-white shadow-md rounded-lg p-6 max-w-xs mx-auto">
-                <h3 class="text-lg font-bold">Zákaznická Podpora</h3>
-                <p class="mt-2">Jsme tu pro vás, abychom zodpověděli všechny vaše dotazy.</p>
+            <div class="bg-white shadow-lg rounded-lg p-6 max-w-xs mx-auto transition-transform transform hover:scale-105">
+                <h3 class="text-xl font-semibold text-gray-900">Zákaznická Podpora</h3>
+                <p class="mt-2 text-gray-700">Jsme tu pro vás, abychom zodpověděli všechny vaše dotazy.</p>
             </div>
         </div>
     </div>
+    
 
    <!-- Products Horizontal Scroll Section -->
 <div class="py-10">
