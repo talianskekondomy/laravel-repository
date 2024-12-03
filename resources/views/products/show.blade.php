@@ -29,6 +29,7 @@
                 <p><strong>In Stock: </strong>{{ $product->in_stock }}</p>
             </div>
         </div>
+    <div> </div>
     </div>
     
 @endsection
