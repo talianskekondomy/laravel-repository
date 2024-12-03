@@ -4,8 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactsController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 
 
 Route::get('/dashboard', function () {
