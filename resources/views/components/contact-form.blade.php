@@ -1,5 +1,5 @@
 <div class="py-10">
-    <h2 class="text-3xl font-semibold text-center">Kontaktní formulář</h2>
+    <h2 class="text-3xl font-semibold text-center text-white">Kontaktní formulář</h2>
     <form class="max-w-md mx-auto mt-4 p-6 bg-white shadow-md rounded-lg" action="#" method="POST">
         @csrf
         <div class="mb-4">
@@ -17,4 +17,3 @@
         <button type="submit" class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 transition duration-200">Odeslat</button>
     </form>
 </div>
-@endsection
