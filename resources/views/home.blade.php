@@ -40,7 +40,7 @@
         <div class="flex space-x-4">
             @foreach($products as $product)
                 <div class="flex-shrink-0 w-64">
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col justify-between h- h-full">
                         <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="object-cover w-full h-48">
                         <div class="p-4">
                             <h3 class="text-lg font-bold">{{ $product->name }}</h3>
