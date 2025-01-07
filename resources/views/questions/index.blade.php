@@ -12,7 +12,7 @@
                 Jak dlouho trvá zpracování mé žádosti?
                 <span class="ml-4">+</span>
             </button>
-            <div class="hidden mt-2 text-gray-700 px-6">
+            <div class="hidden mt-2 text-white px-6">
                 Zpracování žádosti obvykle trvá 1-2 pracovní dny. Budeme vás informovat e-mailem.
             </div>
         </div>
@@ -24,7 +24,7 @@
                 Jak mohu kontaktovat podporu?
                 <span class="ml-4">+</span>
             </button>
-            <div class="hidden mt-2 text-gray-700 px-6">
+            <div class="hidden mt-2 text-white px-6">
                 Podporu můžete kontaktovat prostřednictvím našeho e-mailu support@firma.cz nebo telefonicky na čísle 123 456 789.
             </div>
         </div>
@@ -36,7 +36,7 @@
                 Nabízíte vrácení peněz?
                 <span class="ml-4">+</span>
             </button>
-            <div class="hidden mt-2 text-gray-700 px-6">
+            <div class="hidden mt-2 text-white px-6">
                 Ano, nabízíme vrácení peněz do 30 dnů od zakoupení, pokud nejste s produktem spokojeni.
             </div>
         </div>
