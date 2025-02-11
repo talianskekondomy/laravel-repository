@@ -32,8 +32,9 @@
         </div>
     </div>
 </div>
-
-
+<div>
+    @livewire('gallery')
+</div>
    <!-- Products Horizontal Scroll Section -->
 <div class="py-10">
     <h2 class="text-3xl font-semibold text-center text-white">Naše Produkty</h2>
