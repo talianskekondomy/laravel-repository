@@ -52,8 +52,8 @@ class ProductResource extends Resource
                     ->required()
                     ->maxLength(255),
 
-            Forms\Components\FileUpload::make('image')
-                ->label('Image')
+            Forms\Components\FileUpload::make('photo')
+                ->label('photo')
                 ->image()
                 ->directory('gallery') // Určuje složku pro ukládání souboru
                 ->maxSize(5120) // Maximální velikost souboru (5MB)
