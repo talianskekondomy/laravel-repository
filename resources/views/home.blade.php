@@ -3,7 +3,8 @@
 @section('content')
     <!-- Hero Section with Image and Gradient -->
     <div class="relative h-screen">
-        <img src="https://imgs.search.brave.com/ko2Q7ZOGLlqvLvF_YRANMCfq0u33Z5RmFO9DCe4WCQw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS81/YTllZTY0MTZlOTBk/MjAwMDFiMjAwMzgv/NjI4OWYwYmZhOTIw/YTk1OGYyYjQxNmY3/X2JsYWNrLWdyYWRp/ZW50LnBuZw" alt="Vítejte" class="object-cover w-full h-3/4">
+        <img src="Eshop-Laravel/public/photos/ůž'ér  9.png" alt="Vítejte" class="object-cover w-full h-3/4">
+
         <div class="absolute inset-0 bg-gradient-to-b to-transparent opacity-50"></div>
         <div class="">
             <h1 class="text-white text-5xl font-bold text-center">Vítejte na naší stránce!</h1>
