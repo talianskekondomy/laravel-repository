@@ -31,8 +31,8 @@
                         class="w-full border border-gray-600 focus:border-blue-400 outline-none bg-gray-800 bg-opacity-50 p-3 text-lg h-24 rounded-md"></textarea>
                 </div>
 
-                <button type="submit" class="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md">
-                    ✉️ Odeslat zprávu
+                <button type="submit" class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md">
+                    Odeslat zprávu
                 </button>
             </form>
         </div>
