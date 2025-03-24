@@ -2,4 +2,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./fonts.css";
+
+
+
+
+  
+
+        @font-face {
+        font-family: excon;
+        src: url("/public/fonts/Ranade/Excon/Excon-Black.ttf");
+        
+    }
+    
+    @font-face {
+        font-family: excon;
+        src: url("/public/fonts/Ranade/Excon/Excon-Bold.ttf") ;
+    }
+    @font-face {
+        font-family: Ranade;
+        src: url("/public/fonts/Ranade/Ranade-Bold.ttf");
+        color: black;
+    }
+    

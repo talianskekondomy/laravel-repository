@@ -2,12 +2,12 @@
 
 @section('content')
     <!-- Hero Section with Image and Gradient -->
-    <div class="relative h-screen">
+    <div class="relative h-screen ">
         <img src="Eshop-Laravel/public/photos/ůž'ér  9.png" alt="Vítejte" class="object-cover w-full h-3/4">
 
         <div class="absolute inset-0 bg-gradient-to-b to-transparent opacity-50"></div>
         <div class="">
-            <h1 class="text-white text-5xl font-bold text-center">Vítejte na naší stránce!</h1>
+            <h1 class="text-black text-5xl font-bold text-center font-Ranade">Vítejte na naší stránce!</h1>
         </div>
     </div>
 

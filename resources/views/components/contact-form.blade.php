@@ -1,4 +1,4 @@
-<div class="py-32 bg-gray-900 text-white text-center mb-80 h-auto">
+<div class="py-32 bg-gray-900 text-black text-center mb-80 h-auto">
     <h1 class="text-5xl font-extrabold mb-24" style="margin-bottom: 100px !important;">Kontaktujte nás</h1>
 
     <div class="max-w-4xl mx-auto grid grid-cols-2 gap-[50px] items-center" style="padding-top: 100px !important;">

@@ -10,8 +10,10 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TextArea;
+use Filament\Forms\Components\NumberInput;
+use Filament\Forms\Components\Toggle;
 
 class ProductResource extends Resource
 {
@@ -23,56 +25,72 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
+                // Formulář pro název produktu
                 Forms\Components\TextInput::make('name')
-                ->label('Name')
-                ->required()
-                ->maxLength(255),
+                    ->label('Product Name')
+                    ->required()
+                    ->maxLength(255),
 
+                // Formulář pro popis produktu
                 Forms\Components\TextArea::make('description')
                     ->label('Description')
                     ->required()
                     ->maxLength(1000),
 
-                    // Formulář pro cenu produktu
-                    Forms\Components\TextInput::make('price')
-                    ->label('Price')
-                    ->required()
-                    ->numeric()
-                    ->step(0.01)
-                    ->helperText('Enter the product price'),
+                // Formulář pro cenu produktu
+                Forms\Components\TextInput::make('price')
+                ->label('Price')
+                ->required()
+                ->numeric()
+                ->step(0.01)
+                ->helperText('Enter the product price'),
 
-
-            // Formulář pro dostupnost na skladě
-            Forms\Components\TextInput::make('in_stock')
-            ->label('In Stock')
-            ->required(),
-               // Formulář pro SKU (Stock Keeping Unit)
-            Forms\Components\TextInput::make('sku')
+                // Formulář pro SKU (Stock Keeping Unit)
+                Forms\Components\TextInput::make('sku')
                     ->label('SKU')
                     ->required()
                     ->maxLength(255),
 
-            Forms\Components\FileUpload::make('photo')
-                ->label('photo')
-                ->image()
-                ->directory('gallery') // Určuje složku pro ukládání souboru
-                ->maxSize(5120) // Maximální velikost souboru (5MB)
-                ->required()
-                ->helperText('Upload an image for the gallery')
-                ->disk('public')
-                ->columnSpan('full')
-                ->afterStateUpdated(function ($state, callable $set) {
-                    // Pokud je obrázek nahrán, automaticky vyplníme ostatní pole
-                    if ($state) {
-                        $file = $state; // Obrázek, který byl nahrán
-                        $set('file_name', $file->getClientOriginalName());
-                        $set('file_size', $file->getSize());
-                        $set('file_format', $file->getClientOriginalExtension());
-                    }
-                }),
+                // Formulář pro dostupnost na skladě
+                Forms\Components\TextInput::make('in_stock')
+                    ->label('In Stock')
+                    ->required(),
+                    Forms\Components\FileUpload::make('image')
+                    ->label('Image')
+                    ->image()
+                    ->directory('gallery') // Určuje složku pro ukládání souboru
+                    ->maxSize(5120) // Maximální velikost souboru (5MB)
+                    ->required()
+                    ->helperText('Upload an image for the gallery')
+                    ->disk('public')
+                    ->columnSpan('full')
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        // Pokud je obrázek nahrán, automaticky vyplníme ostatní pole
+                        if ($state) {
+                            $file = $state; // Obrázek, který byl nahrán
+                            $set('file_name', $file->getClientOriginalName());
+                            $set('file_size', $file->getSize());
+                            $set('file_format', $file->getClientOriginalExtension());
+                        }
+                    }),
 
- 
+                // Další pole pro file_name, file_size a file_format, která se vyplní automaticky
+                Forms\Components\TextInput::make('file_name')
+                    ->label('File Name')
+                    ->disabled() // Pole bude automaticky vyplněno
+                    ->default(fn ($get) => $get('image') ? $get('image')->getClientOriginalName() : null),
 
+                Forms\Components\TextInput::make('file_size')
+                    ->label('File Size')
+                    ->disabled() // Pole bude automaticky vyplněno
+                    ->default(fn ($get) => $get('image') ? $get('image')->getSize() : null),
+
+                Forms\Components\TextInput::make('file_format')
+                    ->label('File Format')
+                    ->disabled() // Pole bude automaticky vyplněno
+                    ->default(fn ($get) => $get('image') ? $get('image')->getClientOriginalExtension() : null),
+         
+            
             ]);
     }
 
@@ -80,17 +98,32 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Product Name'),
+                Tables\Columns\TextColumn::make('price')
+                    ->label('Price')
+                    ->money('usd'), // Můžeš použít měnu, např. 'usd'
+                Tables\Columns\TextColumn::make('sku')
+                    ->label('SKU'),
+                Tables\Columns\BooleanColumn::make('in_stock')
+                    ->label('In Stock')
+                    ->trueColor('success') // Označí zeleně, pokud je skladem
+                    ->falseColor('danger'), // Označí červeně, pokud není skladem
             ])
             ->filters([
-                //
+                // Můžeš přidat filtry podle potřeby, např. filtry podle dostupnosti
+                Tables\Filters\SelectFilter::make('in_stock')
+                    ->options([
+                        '1' => 'In Stock',
+                        '0' => 'Out of Stock',
+                    ]),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(), // Akce pro úpravu produktu
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make(), // Akce pro hromadné smazání
                 ]),
             ]);
     }
@@ -98,7 +131,7 @@ class ProductResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            // Pokud máš vztahy, přidej je sem
         ];
     }
 

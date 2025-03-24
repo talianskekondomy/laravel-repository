@@ -2,16 +2,16 @@
 
     @font-face {
     font-family: excon;
-    src: url("/fonts/excon/Excon-Black.ttf") format("ttf");
+    src: url("/fonts/Excon/Excon-Black.ttf") format("ttf");
     color: hotpink;
 }
 
 @font-face {
     font-family: excon;
-    src: url("/fonts/excon/Excon-Bold.ttf") format("ttf");
+    src: url("/fonts/Excon/Excon-Bold.ttf") format("ttf");
 }
 @font-face {
     font-family: ranade;
-    src: url("/fonts/ranade/Ranade-Bold.ttf") format("ttf");
+    src: url("/fonts/Ranade/Ranade-Bold.ttf") format("ttf");
 }
 }
