@@ -30,11 +30,15 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 Route::get('products/search', [ProductController::class, 'search'])->name('products.search');
 
 
+
 Route::get('/questions', [FaqQuestionsController::class, 'index'])->name('questions.index');
 
 Route::post('/reviews', [ReviewController::class, 'store'])->middleware('auth');
 
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
+Route::post('/contacts/send', [ContactsController::class, 'send'])->name('contact.send');
 
 require __DIR__.'/auth.php';

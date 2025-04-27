@@ -2,64 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contats;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Zobrazí kontaktní formulář.
      */
     public function index()
     {
-        return view(view: 'contacts.index');
+        return view('contacts.index');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Zpracuje odeslaná data z kontaktního formuláře.
      */
-    public function create()
+    public function send(Request $request)
     {
-        //
-    }
+        // Validace dat
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'message' => 'required|string|max:1000',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // Odeslání emailu (změňte adresu na skutečnou)
+        Mail::raw($validated['message'], function ($mail) use ($validated) {
+            $mail->to('admin@example.com') // Změňte na váš email
+                ->subject('Nová zpráva z kontaktního formuláře')
+                ->from($validated['email'], $validated['name']);
+        });
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Contats $contats)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Contats $contats)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Contats $contats)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Contats $contats)
-    {
-        //
+        // Přesměrování zpět s potvrzením
+        return back()->with('success', 'Vaše zpráva byla úspěšně odeslána!');
     }
 }

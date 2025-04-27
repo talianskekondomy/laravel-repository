@@ -1,82 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="h-20"> </div>
 <div class="container py-10 mx-auto mt-8">
-    <h1 class="text-3xl font-semibold text-center mb-8 text-white mt-8 !important">Naše Produkty</h1>
+    <h1 class="text-3xl font-semibold text-center mb-8 text-white">Kontaktujte nás</h1>
 
-    <!-- CSS pro Grid -->
-    <style>
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .product-card {
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .product-card .product-description {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .btn-primary {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-    </style>
-
-    <div class="product-grid">
-        @foreach($products as $product)
-        <div class="product-card">
-            <!-- Zobrazit skutečný obrázek z úložiště -->
-            <img id="main-image" src="{{ asset('storage/' . $product->images[0]) }}"
-            alt="{{ $product->name }}" class="product-image">
-
-            <div class="p-4">
-                <h2 class="text-xl font-semibold mb-2 text-center">{{ $product->name }}</h2>
-                <p class="text-gray-600 mb-4 product-description">{{ $product->description }}</p>
-                <p>
-                    Hodnocení:
-                    <strong>
-                    {{ number_format($product->averageRating(), 1) }} ⭐
-                    </strong>
-                    <span class="text-gray-400">({{ $product->reviews->count() }}x)</span>
-                </p>
-                <p class="font-bold text-lg text-blue-600 mb-4 text-center">Cena: {{ $product->price }} Kč</p>
-                <a href="{{ route('products.show', $product->id) }}" class="btn-primary">Zobrazit detaily</a>
-            </div>
+    <!-- Zobrazení úspěšné zprávy -->
+    @if(session('success'))
+        <div class="bg-green-500 text-white p-4 rounded-lg mb-6">
+            {{ session('success') }}
         </div>
-    @endforeach
+    @endif
 
+    <!-- Kontaktní formulář -->
+    <form action="{{ route('contact.send') }}" method="POST" class="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
+        @csrf
+        <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-700">Jméno</label>
+            <input type="text" id="name" name="name" class="border border-gray-300 rounded-md w-full p-2" required>
+            @error('name')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
 
-    </div>
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
+            <input type="email" id="email" name="email" class="border border-gray-300 rounded-md w-full p-2" required>
+            @error('email')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="mb-4">
+            <label for="message" class="block text-sm font-medium text-gray-700">Zpráva</label>
+            <textarea id="message" name="message" rows="4" class="border border-gray-300 rounded-md w-full p-2" required></textarea>
+            @error('message')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <button type="submit" class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 transition duration-200 w-full">
+            Odeslat
+        </button>
+    </form>
 </div>
 @endsection
